@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="cleartype" content="on">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+<link rel="dns-prefetch" href="//jiefangqu.com">
+<title>测试页面</title>
+<style type="text/css">
+html { width:100%; height:100%; min-height: 100%; font-family: sans-serif; -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100% }
+body { position: relative; margin: 0; height:100%; min-height: 100%; width: 100%; background: #fff; color: #232736; font: 12px/180% "Microsoft Yahei", sans-serif; -webkit-tap-highlight-color:rgba(0,0,0,0);/*去掉点击蓝色焦点*/ }
+a { background: transparent }
+a:focus { outline: thin dotted }
+a:active, a:hover { outline: 0 }
+img { border: 0; width:100%; }
+img { max-width: 100% }
+section {width: 100%; margin: 0 auto; }
+.pos-relative { position: relative; }
+.t-center { text-align: center; }
+.mtop3 { margin-top: -3px; }
+.m015{ margin: 0 15px;}
+.w24{ width: 20px}
+.align-middle{ vertical-align:middle;}
+
+a[href*="cnzz"]{ display: none;}
+</style>
+</head>
+<body class="pos-relative">
+<!--<div class="pos-relative">
+	<div class="main-part01">  
+		<div id="openApp" class="f16 t-center"><img class="w24 mtop3 align-middle" src="images/sale_title_left.png" /><span class="m015">打开app</span><img class="w24 mtop3 align-middle" src="images/sale_title_right.png" /></div>
+	</div>
+</div>-->
+<section id="loadingTips" style=" position: fixed; top: 45%; text-align: center; display: none;"><img class="w24 mtop3 align-middle" src="images/loading.gif"/></section>
+<script>
+	
+	(function(){
+        var ua = navigator.userAgent.toLowerCase();
+        var config = {
+            /*scheme:必须*/
+            scheme_name: "解放区",
+            //scheme_IOS: "jiefangqu://jiefangqu.com/homeserver",
+            //scheme_Adr: "jiefangqu://jiefangqu.com/openPropertyAnnounce",
+            scheme_IOS: "openapp.jdmobile://virtual?params={'category':'jump','des':'productDetail','skuId':'3344017','sourceType':'JSHOP_SOURCE_TYPE','sourceValue':'JSHOP_SOURCE_VALUE'}",
+            //scheme_Adr: "openapp.jdmobile://virtual?params={'category':'jump','des':'productDetail','skuId':'3344017','sourceType':'JSHOP_SOURCE_TYPE','sourceValue':'JSHOP_SOURCE_VALUE'}",
+            //scheme_Adr: "jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1&tab=3&clazz=com.jiefangqu.living.act.buy.ShopDetailAct&paramsStr=S.shopId-101101",
+            scheme_Adr: "jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1&tab=3&clazz=com.jiefangqu.living.act.buy.ShopDetailAct&paramsStr=S.shopId-101101+I.aa-50",
+            download_url_IOS: "https://itunes.apple.com/cn/app/jie-fang-qu/id903769677?mt=8&from='sm'",
+            download_url_Adr: "http://app.jiefangqu.com/download/qrCode/androidDown.html",
+            timeout: 1200
+        };
+
+        function openclient() {
+        	
+            var startTime = Date.now();
+            var ifr = document.createElement('iframe');
+            var downLoadUrl = ua.indexOf('os') > 0 ? config.download_url_IOS : config.download_url_Adr;
+
+            ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
+            
+            ifr.style.display = 'none';
+            
+            document.body.appendChild(ifr);
+
+            var timeOutEvent = setTimeout(function() {
+                var endTime = Date.now();
+
+                if ((!startTime || endTime - startTime < config.timeout + 200) && confirm('还没有下载' + config.scheme_name + '？先去下载')) {
+                    window.location = downLoadUrl;
+                    document.getElementById("loadingTips").style.display = "block";
+                }
+                
+            }, config.timeout);
+
+			//如果已经安装该应用，则会在timeout时间内跳转到应用，页面失去焦点，触发清除timeout事件
+            window.onblur = function() {
+                clearTimeout(timeOutEvent);
+            }
+            
+        }
+        
+        //document.getElementById("openApp").addEventListener('click',openclient,false);
+        
+        openclient();
+
+    })()
+	
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261123817'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261123817' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

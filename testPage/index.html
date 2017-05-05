@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+<meta name="description" content="解放区，免你物业费的居家生活神器。" />
+<link rel="dns-prefetch" href="//jiefangqu.com">
+<title>解放区</title>
+<link rel="stylesheet" href="css/uncss/webapp.common.min.css">
+</head>
+<body>
+<section class="sectionBox pos-relative minheight100">
+	<section class="sectionBox">
+		<div class="lineheight0"><img src="images/download_banner.png" /></div>
+	    <div class="list-box mtop40 p00">
+	        <div class="item-standard-name f14 displaybox t-center">
+	        	<div class="boxflex01">
+	        		<a id="btnAndroid" href="http://app.jiefangqu.com/download/qrCode/androidDown.html">
+	        			<img style="width: 32px;" src="images/download_android.png" />
+	        			<div class="black">Android<br>下载</div>
+        			</a>
+	        	</div>
+	        	<div class="boxflex01 borderleft">
+	        		<a id="btnApple" href="https://itunes.apple.com/cn/app/jie-fang-qu/id903769677?mt=8&from='sm'">
+	        			<img style="width: 27px;" src="images/download_ios.png" />
+	        			<div class="black">App Store<br>下载</div>
+        			</a>
+	        	</div>
+	        </div>
+	    </div>
+	    
+	    <section class="divide-box10 pb48 bgwhite"></section>
+	    <ul class="bottom-menu-box displaybox t-center height48 bgwhite">
+	        <li class="p00 boxflex01 t-center f12 lineheight140">Copyright © 2014 深圳前海邻里乐科技服务有限公司<br>All rights reserved.</li>
+	    </ul>
+	
+	</section>
+</section>	
+<script>
+	function getUrlParam(name) {
+		//构造一个含有目标参数的正则表达式对象  
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		//匹配目标参数  
+		var r = window.location.search.substr(1).match(reg);
+		//返回参数值  
+		if (r != null)
+			return unescape(decodeURI(r[2]));	//scheme url作为参数需要先编码，所以这里要先decodeURI解码，然后再unescape解码
+		return null;
+	}
+    
+    function OpenAppBySchema(scheme) {
+	    var ua = navigator.userAgent.toLowerCase();    
+	    if (ua.indexOf('safari') > -1 && (ua.indexOf('os 8') == -1
+	        || ua.indexOf('os 7') == -1
+	        || ua.indexOf('os 6') == -1
+	        || ua.indexOf('os 5') == -1)) {
+	        var schemeLinkOpen = document.getElementById('schemeLinkOpen');
+	        if (!schemeLinkOpen) {
+	            schemeLinkOpen = document.createElement('a');
+	            schemeLinkOpen.id = 'schemeLinkOpen';
+	            schemeLinkOpen.style.display = 'none';
+	            document.body.appendChild(schemeLinkOpen);
+	        }
+	        schemeLinkOpen.href = scheme;
+	        // 执行click
+	        schemeLinkOpen.dispatchEvent(customClickEvent());
+	    }
+	    var iframeObj = document.createElement("iframe");
+	    var startTime = (new Date()).getTime();
+	    if (iframeObj != null) {
+	        iframeObj.setAttribute("style", "height:0px;width:0px;display:none;")
+	        iframeObj.setAttribute("src", scheme);
+	        document.body.appendChild(iframeObj);
+	        document.body.removeChild(iframeObj);
+	    }
+	}
+    
+    function customClickEvent() {
+	    var clickEvent;
+	    if (window.CustomEvent) {
+	        clickEvent = new window.CustomEvent("click", {
+	            canBubble: true,
+	            cancelable: true
+	        }
+	        );
+	    } else {
+	        clickEvent = document.createEvent('Event');
+	        clickEvent.initEvent('click', true, true);
+	    }
+	    return clickEvent;
+	}
+	
+    var ua = navigator.userAgent.toLowerCase();
+    var schemeIOS = getUrlParam('schemeIOS');
+    var schemeAdr = getUrlParam('schemeAdr');
+    var config = {
+        /*scheme:必须*/
+        scheme_IOS: schemeIOS === null ? "jiefangqu://jiefangqu.com?params={'type':'1','controll':'tab1'}" : schemeIOS,
+        scheme_Adr: schemeAdr === null ? "jiefangqu://jiefangqu.com/openApp" : schemeAdr
+    };
+
+    var urlScheme = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
+    
+    OpenAppBySchema(urlScheme);
+	
+</script>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261123817'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1261123817' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
+</html>

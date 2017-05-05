@@ -1,0 +1,42 @@
+安卓：///////////////////////////////////////////////////
+
+jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1&tab=2&clazz=com.jiefangqu.living.act.buy.ShopDetailAct&paramsStr=S.shopId-10012270	//S.shopId-101101 楼下店id，I.aa-50 其他id
+
+jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1	//必须
+tab1:跳首页 tab2：社区店 tab3：到家 tab4：我的
+
+//app内跳转h5
+jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1&tab=3&clazz=com.jiefangqu.living.act.CommonWebViewAct&paramsStr=S.detailUrl-http://192.168.1.86:8020/maintainApp/serviceProcess01.html+S.title-空调开机清洗季
+
+//有响应事件
+jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1&tab=2&clazz=com.jiefangqu.living.act.buy.BannerJumpWebViewAct&paramsStr=SA.string_array_url_params-http://t.cn/Rawwm1m+S.title-商品促销
+
+
+IOS:///////////////////////////////////////////////////
+
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'tab1'}//tab1:跳首页 tab2：社区店 tab3：到家 tab4：我的
+jiefangqu://jiefangqu.com?params={'type':'0','controll':'payPropertyBill'} //物业缴费
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'ShopDetailViewController','params':{'shopId':'10012233'}} //店铺详情
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'PromotionViewController','params':{'isGetWebTitle':true,'isAddHeaderReq':true,'webUrl':'https://xxxxxxx'}}  //促销商品详情
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'CarBanViewController'} //车禁首页
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'BookingNewOrderListTableViewController'} //维修订单列表
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'MyFamilyOrderViewController','params':{'selectTabIndex':'1'}} //超市订单列表，1：跳到已付款列表 0：待付款列表
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'UserNotificationViewController'} //我的消息
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'NewPropertyPlacardViewController'} //社区公告列表
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'AbbreviationDetailViewController','params':{'title':'xxxx','detailId':'10209892'}} //我的消息、公告详情
+
+jiefangqu://jiefangqu.com?params={'type':'1','controll':'SelectRepairItemController','params':{'title':'清洗','parentId':'113'}} //到家-清洗列表
+
+"jiefangqu://jiefangqu.com?params={'type':'1','controll':'WebborseViewController','params':{'title':'空调清洗季','isAddHeaderReq':true,'webUrl':'" + thisLink + "'}}"	//跳转h5
+
+
+跳转页面链接：
+http://resource.linlile.com.cn/docs/urlToApp/index.htm?schemeAdr=jiefangqu%3a%2f%2fjiefangqu.com%2fopenMainActGroup%3fDLJ%3d1%26tab%3d2%26clazz%3dcom.jiefangqu.living.act.buy.DownstairsProductListAct%26paramsStr%3dS.shopId-10012270&schemeIOS=jiefangqu%3a%2f%2fjiefangqu.com%3fparams%3d%7b%27type%27%3a%271%27%2c%27controll%27%3a%27ShopDetailViewController%27%2c%27params%27%3a%7b%27shopId%27%3a%2710012270%27%7d%7d
+
+
+编码后的链接：///////////////////////////////////////////////////
+schemeAdr参数及schemeIOS参数需要分别编码后拼到链接上，再生成短链接：
+http://resource.linlile.com.cn/docs/urlToApp/index.htm?schemeAdr=jiefangqu%3a%2f%2fjiefangqu.com%2fopenMainActGroup%3fDLJ%3d1%26tab%3d2%26clazz%3dcom.jiefangqu.living.act.buy.BannerJumpWebViewAct%26paramsStr%3dSA.string_array_url_params-http%3a%2f%2ft.cn%2fRawS4j0%2bS.title-%e5%95%86%e5%93%81%e4%bf%83%e9%94%80&schemeIOS=jiefangqu%3a%2f%2fjiefangqu.com%3fparams%3d%7b%27type%27%3a%271%27%2c%27controll%27%3a%27WebborseViewController%27%2c%27params%27%3a%7b%27title%27%3a%27%e5%95%86%e5%93%81%e4%bf%83%e9%94%80%27%2c%27isAddHeaderReq%27%3atrue%2c%27webUrl%27%3a%27http%3a%2f%2fapi.linlile.cn%2fAPI%2febuyNew%2fthemeProductAd.html%3fadvId%3d10144%27%7d%7d
+
+编码前的链接：
+http://resource.linlile.com.cn/docs/urlToApp/index.htm?schemeAdr=jiefangqu://jiefangqu.com/openMainActGroup?DLJ=1&tab=2&clazz=com.jiefangqu.living.act.buy.BannerJumpWebViewAct&paramsStr=SA.string_array_url_params-http://t.cn/Rawwm1m+S.title-商品促销&schemeIOS=jiefangqu://jiefangqu.com?params={'type':'1','controll':'WebborseViewController','params':{'title':'商品促销','isAddHeaderReq':true,'webUrl':'http://api.linlile.com.cn/API/ebuyNew/themeProductAd.html?advId=5014296'}}
